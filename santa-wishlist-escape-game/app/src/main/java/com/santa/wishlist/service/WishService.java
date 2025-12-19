@@ -54,9 +54,6 @@ public class WishService {
         meterRegistry.counter("wishes_received_total",
                 "category", wish.getCategory().name()).increment();
 
-        meterRegistry.counter("wishes_by_toy_total",
-                "toyName", wish.getToyName()).increment();
-
         // Mise a jour du gauge pour le nombre total de voeux
         meterRegistry.gauge("wishes_in_database", wishRepository, WishRepository::count);
 

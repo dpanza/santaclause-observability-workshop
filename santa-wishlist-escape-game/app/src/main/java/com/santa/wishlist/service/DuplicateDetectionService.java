@@ -91,12 +91,12 @@ public class DuplicateDetectionService {
 
     public void enableOptimization() {
         this.optimizationEnabled = true;
-        log.info("INDEX optimization enabled for duplicate detection");
+        log.info("Optimization enabled for duplicate detection");
     }
 
     public void disableOptimization() {
         this.optimizationEnabled = false;
-        log.info("INDEX optimization disabled for duplicate detection");
+        log.info("Optimization disabled for duplicate detection");
     }
 
     public boolean isOptimizationEnabled() {
