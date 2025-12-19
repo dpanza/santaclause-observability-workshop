@@ -21,6 +21,10 @@ docker-compose up --build -d
 
 Attendre environ 2 minutes pour que l'application demarre et genere des donnees.
 
+## Partez du dashboard du Père noel
+Chargez le dashboard du père noel dans votre [grafana local](localhost:3000), Dashboard > New > Import. Puis collez le contenu de
+santaclause-observability-workshop/grafana/provisioning/dashboards/santa-workshop-overview.json
+
 ## Redemarrage
 
 ### Redemarrer l'app (sans rebuild)
