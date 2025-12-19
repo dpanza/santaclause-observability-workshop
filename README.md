@@ -15,36 +15,36 @@ Cette application simule la gestion des voeux de cadeaux de Noel.
 
 ## Demarrage rapide
 
+### Prerequis
+
+- Java 21
+- Maven
+- Docker et Docker Compose
+
+### Installation
+
+1. Demarrer les services (PostgreSQL, Grafana, OpenTelemetry Collector) :
+
 ```bash
-docker-compose up --build -d
+./run-services.sh
 ```
 
-Attendre environ 2 minutes pour que l'application demarre et genere des donnees.
+2. Dans un autre terminal, builder et demarrer l'application :
+
+```bash
+./run-app.sh
+```
+
+Ce script va :
+- Compiler l'application avec Maven
+- Telecharger l'agent OpenTelemetry (si absent)
+- Demarrer l'application avec l'instrumentation OpenTelemetry
+
+Attendre environ 1 minute pour que l'application demarre et genere des donnees.
 
 ## Partez du dashboard du Père noel
 Chargez le dashboard du père noel dans votre [grafana local](localhost:3000), Dashboard > New > Import. Puis collez le contenu de
 santaclause-observability-workshop/grafana/provisioning/dashboards/santa-workshop-overview.json
-
-## Redemarrage
-
-### Redemarrer l'app (sans rebuild)
-
-```bash
-docker-compose restart app -d
-```
-
-### Redemarrer avec rebuild (apres modification du code)
-
-```bash
-docker-compose up --build app -d
-```
-
-### Reset complet (supprime les donnees)
-
-```bash
-docker-compose down -v
-docker-compose up --build -d
-```
 
 ## Acces
 
@@ -53,46 +53,6 @@ docker-compose up --build -d
 | Application | http://localhost:8080 | -                 |
 | Grafana     | http://localhost:3000 | admin / santa     |
 | PostgreSQL  | localhost:5432        | santa / northpole |
-
-## API
-
-### Soumettre un voeu
-
-```bash
-curl -X POST http://localhost:8080/wishes \
-  -H "Content-Type: application/json" \
-  -d '{"childName": "Emma", "toyName": "Teddy Bear", "category": "PLUSH"}'
-```
-
-### Consulter un voeu
-
-```bash
-curl http://localhost:8080/wishes/{id}
-```
-
-### Consulter les voeux d'un enfant
-
-```bash
-curl http://localhost:8080/wishes?child=Emma
-```
-
-### Statistiques
-
-```bash
-curl http://localhost:8080/admin/stats
-```
-
-### Activer l'optimisation
-
-```bash
-curl -X POST http://localhost:8080/admin/enable-optimization
-```
-
-### Desactiver l'optimisation
-
-```bash
-curl -X POST http://localhost:8080/admin/disable-optimization
-```
 
 ## Metriques disponibles
 
@@ -131,6 +91,8 @@ docker-compose down -v
 ```
 santa-wishlist-escape-game/
 ├── docker-compose.yml
+├── run-services.sh
+├── run-app.sh
 ├── app/
 │   ├── pom.xml
 │   ├── Dockerfile
@@ -158,4 +120,43 @@ santa-wishlist-escape-game/
 ├── sql/
 │   └── init.sql
 └── README.md
+```
+## API
+
+### Soumettre un voeu
+
+```bash
+curl -X POST http://localhost:8080/wishes \
+  -H "Content-Type: application/json" \
+  -d '{"childName": "Emma", "toyName": "Teddy Bear", "category": "PLUSH"}'
+```
+
+### Consulter un voeu
+
+```bash
+curl http://localhost:8080/wishes/{id}
+```
+
+### Consulter les voeux d'un enfant
+
+```bash
+curl http://localhost:8080/wishes?child=Emma
+```
+
+### Statistiques
+
+```bash
+curl http://localhost:8080/admin/stats
+```
+
+### Activer l'optimisation
+
+```bash
+curl -X POST http://localhost:8080/admin/enable-optimization
+```
+
+### Desactiver l'optimisation
+
+```bash
+curl -X POST http://localhost:8080/admin/disable-optimization
 ```

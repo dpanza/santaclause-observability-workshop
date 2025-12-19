@@ -344,12 +344,12 @@ Créez un dashboard de synthèse et des alertes pour protéger Noël.
 
 Créez un nouveau dashboard "Santa's Alert Center" avec les panels suivants :
 
-| Panel | Description | Métrique/Requête |
-|-------|-------------|------------------|
-| 🔴 Cache Health | Taux de cache miss par catégorie | |
-| 🟡 Processing Time | Temps de traitement par lutin | |
-| 🟢 Duplicate Check | Durée du check vs nombre de wishes | |
-| 📊 System Overview | Vue globale des KPIs | |
+| Panel              | Description                        | Métrique/Requête |
+|--------------------|------------------------------------|------------------|
+| 🔴 Cache Health    | Taux de cache miss par catégorie   |                  |
+| 🟡 Processing Time | Temps de traitement par lutin      |                  |
+| 🟢 Duplicate Check | Durée du check vs nombre de wishes |                  |
+| 📊 System Overview | Vue globale des KPIs               |                  |
 
 **Partie 2 : Création d'une alerte**
 
@@ -359,13 +359,13 @@ Créez une alerte qui se déclenche si le taux de cache miss dépasse 50% pendan
 1. Allez dans **Alerting → Alert rules → New alert rule**
 2. Configurez la condition
 
-| Paramètre | Valeur |
-|-----------|--------|
-| Métrique | |
-| Condition | |
-| Seuil | |
-| Durée | |
-| Message | |
+| Paramètre  | Valeur |
+|------------|--------|
+| Métrique   |        |
+| Condition  |        |
+| Seuil      |        |
+| Durée      |        |
+| Message    |        |
 
 **Partie 3 : Diagnostic final**
 
@@ -380,16 +380,6 @@ Problème 3 :
 Problème 4 : 
 Recommandation : 
 ```
-
-### Validation finale
-
-Une fois votre alerte créée correctement, vérifiez les logs de l'application :
-
-```bash
-curl http://localhost:8080/admin/stats
-```
-
-Si tout est correct, vous verrez apparaître le code secret de validation !
 
 ---
 
@@ -411,14 +401,14 @@ Le traîneau est chargé, les rennes sont prêts. Noël est sauvé ! 🎅🦌�
 
 Une fois toutes les énigmes résolues, assemblez vos réponses pour former le code secret :
 
-| Énigme | Élément clé trouvé |
-|--------|-------------------|
-| 1 | Nom du lutin en difficulté |
-| 2 | Catégorie problématique |
-| 3 | Type d'optimisation (INDEX) |
-| 4 | Nom du span lent |
-| 5 | Nom de la table DB |
-| 6 | Seuil de votre alerte |
+| Énigme | Élément clé trouvé         | Réponse        |
+|--------|----------------------------|----------------|
+| 1      | Nom du lutin en difficulté | Sparkle        |
+| 2      | Catégorie problématique    | ELECTRONIC     |
+| 3      | Type d'optimisation        | REPOSITORY     |
+| 4      | Nom du span lent           | ENTREPOT       |
+| 5      | Nom de la table DB         | toy_inventory  |
+| 6      | Seuil de votre alerte      |                |
 
 **Code secret : 🎄 NOEL-2024-SAVED 🎄**
 
